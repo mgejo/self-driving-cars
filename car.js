@@ -10,11 +10,12 @@ class Car{
         this.maxSpeed = 3;
         this.friction = 0.05;
         this.angle = 0;
+        this.sensor = new Sensor(this);
         this.controls = new Controls();
     }
 
     draw(){
-        const {x, y, width, height, ctx, angle} = this;
+        const {x, y, width, height, ctx, angle, sensor} = this;
         ctx.save();
         ctx.translate(x, y);
         ctx.rotate(-angle);
@@ -27,10 +28,12 @@ class Car{
         )
         ctx.fill();
         ctx.restore();
+        sensor.draw();
     }
 
-    update() {
+    update(roadBorders) {
         this.#move();
+        this.sensor.update(roadBorders);
     }
 
     #move() {
