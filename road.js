@@ -33,8 +33,6 @@ class Road{
         ctx.lineWidth = 5;
         ctx.strokeStyle = "white";
 
-        const lerp = (A, B, t) => (A + (B - A) * t);
-
         Array.from({ length: laneCount + 1 }).forEach((emptyElem, index) => {
 
             if (index == 0 || index == laneCount) {
